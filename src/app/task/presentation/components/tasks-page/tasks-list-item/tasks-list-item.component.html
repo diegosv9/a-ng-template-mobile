@@ -1,0 +1,13 @@
+<div
+  class="flex aspect-square h-6 w-6 flex-col items-center justify-center rounded-full border"
+  [ngClass]="
+    task()?.completed
+      ? 'border-green-500/50 bg-green-400/50 text-green-600 dark:border-green-600/50 dark:bg-green-700/50 dark:text-green-600'
+      : 'border-zinc-100 bg-white dark:border-zinc-700 dark:bg-zinc-800'
+  "
+>
+  @if (task()?.completed) {
+    <ng-icon name="lucideCheck" size="1rem"></ng-icon>
+  }
+</div>
+{{ task()?.title }}

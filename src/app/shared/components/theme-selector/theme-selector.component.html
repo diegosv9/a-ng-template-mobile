@@ -1,0 +1,9 @@
+<p-selectbutton
+  [(ngModel)]="selectedOption"
+  [options]="stateOptions"
+  size="small"
+  (onChange)="onSelectChange($event)"
+  optionLabel="label"
+  optionValue="value"
+  aria-labelledby="basic"
+/>

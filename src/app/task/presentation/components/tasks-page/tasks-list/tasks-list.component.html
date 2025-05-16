@@ -1,0 +1,9 @@
+@if (isLoading()) {
+  <span>Recuperando tareas</span>
+} @else {
+  <div class="flex w-96 flex-col items-center justify-center gap-2">
+    @for (task of tasks(); track task.id) {
+      <app-tasks-list-item [task]="task"></app-tasks-list-item>
+    }
+  </div>
+}
