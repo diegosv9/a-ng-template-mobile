@@ -1,5 +1,16 @@
 {
-  "app.title": "Another Angular Template",
-  "app.description": "This Angular template is designed to help developers create modern and efficient web applications using Angular. It provides a basic structure and code examples to facilitate application development and customization according to project needs.",
-  "tasks.taskPage": "Finish setting up your project"
+  "app": {
+    "title": "Another Angular Template",
+    "description": "This Angular template is designed to help developers create modern and efficient web applications using Angular. It provides a basic structure and code examples to facilitate application development and customization according to project needs."
+  },
+  "tasks": {
+    "taskPage": {
+      "title": "Task List"
+    }
+  },
+  "task": {
+    "addTask": {
+      "placeholder": "Add a new task"
+    }
+  }
 }

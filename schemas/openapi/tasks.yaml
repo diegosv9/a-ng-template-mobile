@@ -1,0 +1,183 @@
+openapi: 3.0.0
+info:
+  title: Task API
+  description: API for managing tasks.
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/api/v1
+    description: Local server
+
+paths:
+  /tasks:
+    get:
+      summary: Get all tasks
+      responses:
+        '200':
+          description: List of tasks retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Task'
+        '500':
+          description: Internal server error
+    post:
+      summary: Create a new task
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NewTask'
+      responses:
+        '201':
+          description: Task created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '400':
+          description: Invalid request
+        '500':
+          description: Internal server error
+
+  /tasks/{taskId}:
+    get:
+      summary: Get a task by ID
+      parameters:
+        - in: path
+          name: taskId
+          schema:
+            type: string
+          required: true
+          description: ID of the task to retrieve
+      responses:
+        '200':
+          description: Task retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '404':
+          description: Task not found
+        '500':
+          description: Internal server error
+    put:
+      summary: Update a task by ID
+      parameters:
+        - in: path
+          name: taskId
+          schema:
+            type: string
+          required: true
+          description: ID of the task to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateTask'
+      responses:
+        '200':
+          description: Task updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+        '400':
+          description: Invalid request
+        '404':
+          description: Task not found
+        '500':
+          description: Internal server error
+    delete:
+      summary: Delete a task by ID
+      parameters:
+        - in: path
+          name: taskId
+          schema:
+            type: string
+          required: true
+          description: ID of the task to delete
+      responses:
+        '200':
+          description: Task deleted successfully
+        '404':
+          description: Task not found
+        '500':
+          description: Internal server error
+
+components:
+  schemas:
+    Task:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique ID of the task
+          readOnly: true # The ID is server-generated
+        title:
+          type: string
+          description: Title of the task
+          example: Buy milk
+        description:
+          type: string
+          description: Detailed description of the task
+          nullable: true # Can be null
+          example: Go to the supermarket and buy whole milk
+        completed:
+          type: boolean
+          description: Indicates if the task is completed
+          example: false
+        createdAt:
+          type: string
+          format: date-time
+          description: Date and time when the task was created
+          readOnly: true # Creation date is server-generated
+        updatedAt:
+          type: string
+          format: date-time
+          description: Date and time of the last task update
+          readOnly: true # Update date is server-managed
+      required:
+        - title
+        - completed
+
+    NewTask:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the task
+          example: Buy milk
+        description:
+          type: string
+          description: Detailed description of the task
+          nullable: true # Can be null
+          example: Go to the supermarket and buy whole milk
+        completed:
+          type: boolean
+          description: Indicates if the task is completed
+          example: false
+      required:
+        - title
+        - completed
+
+    UpdateTask:
+      type: object
+      properties:
+        title:
+          type: string
+          description: Title of the task
+          example: Buy skim milk
+        description:
+          type: string
+          description: Detailed description of the task
+          nullable: true # Can be null
+          example: Go to the supermarket and buy skim milk
+        completed:
+          type: boolean
+          description: Indicates if the task is completed
+          example: true

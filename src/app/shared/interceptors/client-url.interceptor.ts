@@ -8,7 +8,10 @@ export const clientUrlInterceptor: HttpInterceptorFn = (req, next) => {
     Object.entries(urls).forEach(([key, value]) => {
       if (req.url.includes(key)) {
         req = req.clone({
-          url: req.url.replace(key, value || `undefined url for ${key}`),
+          url: req.url.replace(
+            `$${key}-client$`,
+            value || `undefined url for ${key}`,
+          ),
         });
       }
     });
