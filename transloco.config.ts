@@ -5,6 +5,7 @@ const config: TranslocoGlobalConfig = {
   langs: ['en', 'es'],
   keysManager: {
     addMissingKeys: true,
+    unflat: true,
   },
 };
 

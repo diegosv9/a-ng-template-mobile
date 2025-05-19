@@ -1,5 +1,16 @@
 {
-  "app.title": "Another Angular Template",
-  "app.description": "Esta plantilla de Angular está diseñada para ayudar a los desarrolladores a crear aplicaciones web modernas y eficientes utilizando Angular. Proporciona una estructura básica y ejemplos de código para facilitar el desarrollo y la personalización de la aplicación según las necesidades del proyecto.",
-  "tasks.taskPage": "Termina de configurar tu proyecto"
+  "app": {
+    "title": "Another Angular Template",
+    "description": "Esta plantilla de Angular está diseñada para ayudar a los desarrolladores a crear aplicaciones web modernas y eficientes utilizando Angular. Proporciona una estructura básica y ejemplos de código para facilitar el desarrollo y la personalización de la aplicación según las necesidades del proyecto."
+  },
+  "tasks": {
+    "taskPage": {
+      "title": "Lista de tareas"
+    }
+  },
+  "task": {
+    "addTask": {
+      "placeholder": "Agregar una nueva tarea"
+    }
+  }
 }
