@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TasksListComponent } from './tasks-list.component';
+import { InjectionToken } from '@angular/core';
+import { AddTaskComponent } from './add-task.component';
 import { TasksState } from '../../../states/tasks-state.service';
 import { GetTasksUseCase } from 'src/app/task/application/use-cases/get-tasks-use-case.service';
-import { TASKS_CLIENT } from 'src/app/task/application/ports/tasks-client.port';
 import {
   DefaultTranspiler,
   TRANSLOCO_FALLBACK_STRATEGY,
@@ -11,17 +11,26 @@ import {
   TRANSLOCO_TRANSPILER,
 } from '@jsverse/transloco';
 
-describe('TasksListComponent', () => {
-  let component: TasksListComponent;
-  let fixture: ComponentFixture<TasksListComponent>;
+describe('AddTaskComponent', () => {
+  let component: AddTaskComponent;
+  let fixture: ComponentFixture<AddTaskComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TasksListComponent],
+      imports: [AddTaskComponent],
       providers: [
-        TasksState,
-        GetTasksUseCase,
-        { provide: TASKS_CLIENT, useValue: { getTasks: () => [] } },
+        {
+          provide: new InjectionToken('TasksClient'),
+          useValue: {},
+        },
+        {
+          provide: TasksState,
+          useValue: {},
+        },
+        {
+          provide: GetTasksUseCase,
+          useValue: {},
+        },
         { provide: TRANSLOCO_TRANSPILER, useClass: DefaultTranspiler },
         { provide: TRANSLOCO_MISSING_HANDLER, useValue: (key: string) => key },
         { provide: TRANSLOCO_INTERCEPTOR, useValue: [] },
@@ -29,7 +38,7 @@ describe('TasksListComponent', () => {
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TasksListComponent);
+    fixture = TestBed.createComponent(AddTaskComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

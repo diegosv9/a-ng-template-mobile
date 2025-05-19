@@ -1,0 +1,21 @@
+<p-iconfield>
+  <input
+    type="text"
+    pInputText
+    [formControl]="title"
+    fluid
+    [placeholder]="'task.addTask.placeholder' | transloco"
+    class="border-zinc-200 bg-zinc-50 text-zinc-900 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+    (keypress)="onKeypressEnter($event)"
+  />
+  <p-inputicon>
+    <button
+      type="button"
+      class="flex cursor-pointer items-center"
+      [class.animate-spin]="icon() === 'lucideLoaderCircle'"
+      (click)="addTask()"
+    >
+      <ng-icon [name]="icon()" size="1.3rem"></ng-icon>
+    </button>
+  </p-inputicon>
+</p-iconfield>

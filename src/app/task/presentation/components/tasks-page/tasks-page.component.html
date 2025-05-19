@@ -1,4 +1,11 @@
-<h1 class="mt-16 w-fit text-xl font-semibold text-zinc-600 dark:text-zinc-300">
-  {{ 'tasks.taskPage' | transloco }}
-</h1>
+<div class="mt-10 flex w-full flex-row items-center gap-2">
+  <h1
+    class="flex w-full grow text-xl font-semibold text-zinc-600 dark:text-zinc-300"
+  >
+    {{ 'tasks.taskPage.title' | transloco }}
+  </h1>
+  @if (isLoading()) {
+    <p-progress-spinner styleClass="w-5 h-5" ariaLabel="loading" />
+  }
+</div>
 <app-tasks-list class="mt-8"></app-tasks-list>

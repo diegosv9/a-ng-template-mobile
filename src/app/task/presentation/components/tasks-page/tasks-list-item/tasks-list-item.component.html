@@ -1,13 +1,26 @@
-<div
-  class="flex aspect-square h-6 w-6 flex-col items-center justify-center rounded-full border"
+<button
+  class="flex aspect-square h-6 w-6 cursor-pointer flex-col items-center justify-center rounded-full border transition-colors duration-200 ease-in-out dark:focus:ring-2 dark:focus:ring-offset-zinc-800"
   [ngClass]="
     task()?.completed
       ? 'border-green-500/50 bg-green-400/50 text-green-600 dark:border-green-600/50 dark:bg-green-700/50 dark:text-green-600'
       : 'border-zinc-100 bg-white dark:border-zinc-700 dark:bg-zinc-800'
   "
+  (click)="toggleTasksCompletion($event)"
+  (keydown.enter)="toggleTasksCompletion($event)"
+  role="checkbox"
+  [attr.aria-checked]="task()?.completed"
 >
   @if (task()?.completed) {
     <ng-icon name="lucideCheck" size="1rem"></ng-icon>
   }
-</div>
-{{ task()?.title }}
+</button>
+<span class="w-full grow">{{ task()?.title }}</span>
+<button
+  class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md p-1 transition-colors duration-200 ease-in-out hover:bg-red-500/60 dark:hover:bg-red-500/40"
+  (click)="deleteTask($event)"
+  (keydown.enter)="deleteTask($event)"
+  role="button"
+  aria-label="Delete task"
+>
+  <ng-icon name="lucideTrash" size="1rem"></ng-icon>
+</button>

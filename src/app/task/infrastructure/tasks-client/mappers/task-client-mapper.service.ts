@@ -1,30 +1,28 @@
 import { Injectable } from '@angular/core';
-import { TaskDTO } from '../dtos/task-dto';
 import { Task } from 'src/app/task/domain/task.model';
+import { TaskDTO } from 'src/generated/api/tasks/model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskClientMapper {
-  mapToDomain(taskDTO: TaskDTO): Task {
+  toDomain(taskDTO: TaskDTO): Task {
     return {
       id: taskDTO.id,
       title: taskDTO.title,
       description: taskDTO.description,
       completed: taskDTO.completed,
-      createdAt: new Date(taskDTO.createdAt),
-      updatedAt: new Date(taskDTO.updatedAt),
+      createdAt: taskDTO.createdAt ? new Date(taskDTO.createdAt) : undefined,
+      updatedAt: taskDTO.updatedAt ? new Date(taskDTO.updatedAt) : undefined,
     };
   }
 
-  mapToDto(task: Task): TaskDTO {
+  toDto(task: Task): TaskDTO {
     return {
       id: task.id,
       title: task.title,
       description: task.description,
       completed: task.completed,
-      createdAt: task.createdAt.toISOString(),
-      updatedAt: task.updatedAt.toISOString(),
     };
   }
 }
