@@ -1,5 +1,6 @@
 <div
   class="fixed flex w-full flex-row items-center justify-end bg-zinc-100/75 p-2 backdrop-blur-xs backdrop-saturate-150 dark:bg-zinc-900/75"
+  style="padding-top: max(0.5rem, var(--safe-area-inset-top)); padding-left: max(0.5rem, var(--safe-area-inset-left)); padding-right: max(0.5rem, var(--safe-area-inset-right));"
 >
   <div class="flex cursor-pointer items-center p-2">
     <ng-icon name="lucideMenu" size="1.75rem"></ng-icon>
@@ -10,7 +11,7 @@
   >
   <app-theme-toggle></app-theme-toggle>
 </div>
-<div class="h-full p-2 pt-6">
+<div class="h-full p-2 pt-6" style="padding-left: max(0.5rem, var(--safe-area-inset-left)); padding-right: max(0.5rem, var(--safe-area-inset-right)); padding-bottom: max(0.5rem, var(--safe-area-inset-bottom));">
   <div class="mt-10">
     <router-outlet />
   </div>
