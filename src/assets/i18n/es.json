@@ -1,0 +1,15 @@
+{
+  "app": {
+    "title": "Missing value for 'app.title'"
+  },
+  "tasks": {
+    "taskPage": {
+      "title": "Missing value for 'tasks.taskPage.title'"
+    }
+  },
+  "task": {
+    "addTask": {
+      "placeholder": "Missing value for 'task.addTask.placeholder'"
+    }
+  }
+}
