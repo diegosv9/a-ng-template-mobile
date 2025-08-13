@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ThemeToggleComponent } from './shared/components/theme-toggle/theme-toggle.component';
 import { TranslocoPipe } from '@jsverse/transloco';
 import { NgIcon, provideIcons } from '@ng-icons/core';
 import { lucideMenu } from '@ng-icons/lucide';
+import { SafeAreaService } from './core/services/safe-area.service';
 
 @Component({
   selector: 'app-root',
@@ -12,4 +13,10 @@ import { lucideMenu } from '@ng-icons/lucide';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  private safeAreaService = inject(SafeAreaService);
+
+  async ngOnInit(): Promise<void> {
+    await this.safeAreaService.initializeSafeArea();
+  }
+}
